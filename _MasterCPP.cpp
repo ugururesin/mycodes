@@ -1,63 +1,23 @@
 
-// WELCOME TO C++-PROGRAMMING! - 2019
-// By Ugur Uresin
+// WELCOME TO C++  PROGRAMMING! - 2019
+
+/* This Code is Written By Ugur Uresin
+For training purposes! */
 
 // CONTENT
-// 01 DATA TYPES & FORMATS
-// 02 ARITHMETIC OPERATIONS
-// 03 ARITHMETIC STATEMENTS
-// 04 APPOINTMENT, INCREASE, DECREASE
-// 05 TYPE TRANSFORMATIONS
-// 06 INPUT/OUTPUT FUNCTIONS
-// 07 EXAMPLE PROGRAM: AVERAGE CALCULATOR (SCANF)
-// 08 EXAMPLE PROGRAM: PARABOLA ROOT CALCULATOR (SCANF)
-// 09 LOGICAL STATEMENTS
-
-// 10 CONDITIONALS (IF-ELSE)
-// 11 CONDITIONALS (ELSE-IF)
-// 12 SWITCH-CASE
-// 13 LOOPS-1 (WHILE LOOP)
-// 14 LOOPS-2 (DO-WHILE LOOP)
-// 15 LOOPS-3 (FOR LOOP)
-// 16 EXAMPLE PROGRAM: FIBONACCI SERIE (FOR LOOP)
-// 17 EXAMPLE PROGRAM: SUM OF GIVEN NUMBERS (BREAK)
-// 18 EXAMPLE PROGRAM: SUM OF EVEN NUMBERS (CONTINUE)
-
-// 19 ARRAYS-1 (Integer Arrays)
-// 20 ARRAYS-2 (Float Arrays)
-// 21 ARRAYS-3 (String Arrays)
-// 22 ARRAYS-4 (Multi-Dimension Arrays)
-// 23 EXAMPLE PROGRAM: BUILDING AN 3x5 MATRIX (ARRAYS)
-
-// 24 FUNCTIONS-1
-// 25 FUNCTIONS-2 (Summation & Factorial Functions)
-// 26 FUNCTIONS-3 (Prime Number Detection)
-// 27 FUNCTIONS-4 (Arrays as parameter)
-// 28 FUNCTIONS-5 (Strings as parameter)
-
-// 29 POINTERS-1 (INTRODUCTION)
-// 30 POINTERS-2
-// 31 POINTERS-3 (Call By Value)
-// 32 POINTERS-4 (Call By Reference)
-
-// 33 ARRAYS & POINTERS
-// 34 EXAMPLE PROGRAM: MAX FINDER BY ARRAY POINTER
-// 35 STRINGS & POINTERS
-// 36 FUNCTIONS WITH POINTER RETURN
-// 37 POINTER ARRAYS (ARRAYS THAT STORE POINTERS)
-// 38 EXAMPLE PROGRAM: BUBBLE SORTING
-
-// 39 STRUCTURES-1
-// 40 STRUCTURES-2
-// 41 NESTED STRUCTURES
-// 42 ARRAY STRUCTURES
-// 43 FUNCTIONS & STRUCTURES
-// 44 POINTERS & STRUCTURES
-// 45 CALL BY REFERENCE IN STRUCTURES
-
-// 46 FILES-1: fopen function
-// 47 FILES-2: fputc function
-// 48 FILES-3: fputs function
+// 01 HELLO WORLD!
+// 02 NAMESPACE
+// 03 PRINT VARIABLES
+// 04 FORMATTING THE OUTPUT
+// 05 FILE IO
+// 06 POINTERS
+// 07 ARRAYS
+// 08 FUNCTIONS
+// 09 IF-STATEMENTS
+// 10 SWITCH STAT
+// 12 FOR LOOPS
+// 13 EXITING LOOPS
+// 14 CLASSES
 
 
 // -------------------------------------------------- //
@@ -69,7 +29,6 @@ int main()
   std::cout << "Hello world, I am ready for C++";
   return 0;
 }
-
 
 
 // 02 NAMESPACE
@@ -303,6 +262,7 @@ int main()
     return 0;
 }
 
+
 // 12 FOR LOOPS
 // REGULAR WHILE LOOP
 while(condition)
@@ -341,8 +301,63 @@ int main()
     return 0;
 }
 
-// 13 EXITING LOOPS
 
+// 13 EXITING LOOPS
+#include<iostream>
+
+int main()
+{
+    int a = 0;
+    while(a < 5)
+    {
+        std::cout<<"a = "<<a<<"\n";       
+        a++;
+        if(a == 3)
+            break;
+    }
+    std::cout<<"The first statement after the first while loop\n\n";
+    
+    
+    while(a < 15)
+    {
+        a++;
+        if(a == 10)
+        {
+            std::cout<<"\tWhen a=10, go back to the top of the loop";
+            std::cout<<"\n\tThis means a=10 is skipped.\n";
+            continue;
+        }
+        std::cout<<"After continue a = "<<a<<"\n";           
+    }
+    return 0;
+}
+
+
+
+// 14 CLASSES
+/*Now let's add the setName function
+(functions in classes are also called methods) to our Student class.
+Recall the default for members in a class is private.
+We want the access functions to be public.
+So we add the keyword "public" and all members listed
+after it are accessible*/
+class Student
+{
+        string name;
+        int id;
+        int gradDate;
+
+    public:
+        void setName(string nameIn);
+        void setId(int idIn);
+        void setGradDate(int dateIn);
+        
+        string getName();
+        int getId();
+        int getGradDate();
+        
+        void print();
+};
 
 
 
