@@ -33,6 +33,9 @@ To execute the program: ./executableName
 // 22 VECTORS and ITERATORS
 // 23 VECTOR OPERATIONS
 // 24 INSERT
+// 25 EMPLACE
+// 26 VECTOR METHODS (RECAP)
+// 27 CLEAR, ERASE and POP_BACK METHODS
 
 // -------------------------------------------------- //
 // 01 HELLO WORLD!
@@ -818,3 +821,77 @@ int main(void)
         
     return 0;
 }
+
+// 25 EMPLACE
+/*Emplace puts an element in a vector at the position
+pointed to by the iterator.
+
+Emplace differs from insert in the method used to insert the element.
+INSERT -> copies the values of the vector
+EMPLACE -> does an in-place insertion.
+This means the insertion occurs at the point after the iterator.*/
+
+//creating a vector of integers
+std::vector<int> myVector;  
+//creating an iterator for the vector
+std::vector<int>::iterator it;
+//insert an element after the first element */
+it  = myVector.begin() + 1;
+myVector.emplace(it, -1);
+
+// 26 VECTOR METHODS (RECAP)
+// constructing vectors
+// constructing vectors
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+  void printVector(vector<int> vIn);
+  void assignFunction(vector<int> vInts, int in);
+  void pushBackFunction(vector<int> vInts, int in);
+  void emplaceFunction(vector<int> vInts, int loc, int in);
+
+ void printVector(vector<int> vIn)
+ {//printing the contents of vIns
+  vector<int>::iterator it;
+
+  for (it = vIn.begin(); it != vIn.end(); ++it)
+    std::cout<<*it<<" ";
+ }
+
+  void assignFunction(vector<int> vInts, int in)
+  {
+      cout<<"\nassigning "<<in<<" and printing the vector\n";
+      vInts.assign(1, in);
+      printVector(vInts);
+  }
+  void pushBackFunction(vector<int> vInts, int in)
+  {
+      cout<<"\npush back "<<in<<" and printing the vector\n";
+      vInts.push_back(in);
+      printVector(vInts);
+  }
+  void emplaceFunction(vector<int> vInts,  int loc, int in)
+  {
+      vector<int>::iterator it;
+      cout<<"\nemplacing "<<in<<" and printing the vector\n";
+      it  = vInts.begin() + loc;
+      vInts.emplace(it, in);
+      printVector(vInts);
+  }
+
+// 27 CLEAR, ERASE and POP_BACK METHODS
+//clear the vector
+myVector.clear(); 
+
+//erase the 5th element
+myVector.erase(myVector.begin()+4); 
+//erase a range of elements in the vector
+vectorInts.erase(vectorInts.begin()+1, vectorInts.begin()+3);
+
+//pop the last element off the vector
+myVector.pop_back();
+
+
+
