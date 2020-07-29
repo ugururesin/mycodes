@@ -29,6 +29,9 @@ To execute the program: ./executableName
 // 18 GENERIC CLASSES
 // 19 CLASS INHERITANCE
 // 20 MULTIPLE CLASS INHERITANCE
+// 21 VECTOR CONSTRUCTING
+// 22 VECTORS and ITERATORS
+// 23 VECTOR OPERATIONS
 
 // -------------------------------------------------- //
 // 01 HELLO WORLD!
@@ -635,6 +638,7 @@ Protected Inheritance means all members of the base class are protected to the d
 It is very rare to have a protected or private inheritance,
 the vast majority of the time inheritance is public.*/
 
+
 // 20 MULTIPLE CLASS INHERITANCE
 //Format:
 class DerivedClass : access BaseClass1, ... ,access BaseClassN
@@ -645,6 +649,144 @@ class TeachingAssociate: public Staff, public GradStudent
 In the statement shown above, the derived class is TeachingAssociate.
 It inherits attributes from Staff and from GradStudent.
 */
+
+
+// 21 VECTOR CONSTRUCTING
+#include <iostream>
+#include <vector>  //Need to include the vector library!
+int main ()
+{
+  //creating a vector of integers
+  std::vector<int> vectorInts;  
+  std::cout<<"vectorInts has "<<vectorInts.size()<<" elements\n";
+  
+  //Changing the size of vectorInts to 6
+  vectorInts.resize(6);
+  std::cout<<"\n\nvectorInts now has "<<vectorInts.size()<<" elements\n";
+ 
+  return 0;
+}
+
+
+// 22 VECTORS and ITERATORS
+/*
+Vectors are more versatile than arrays,
+and can be resized during runtime.
+We can also insert elements into a vector.
+This characteristic adds a lot of freedom to vectors
+that we don't have with arrays!
+
+It also means we have to adjust how we access elements in a vector.
+Since we can add elements anywhere in the vector,
+we do not refer to the first element of a vector as the zero element,
+we call it the beginning.
+
+The last element is called end.
+To keep track of where we are in the vector, we need an iterator.*/
+
+//creating an iterator for the vector
+std::vector<int>::iterator it;
+
+//We use the iterator to cycle through the vector.
+//Begin is the first element in the vector, end it the last.
+for (it = vectorInts.begin(); it != vectorInts.end(); ++it)
+    std::cout<<*it<<" ";
+
+//Example
+#include <iostream>
+#include <vector>
+int main ()
+{
+  //creating a vector of integers
+  std::vector<int> vectorInts;  
+  //creating an iterator for the vector
+  std::vector<int>::iterator it;
+  
+  std::cout<<"vectorInts has "<<vectorInts.size()<<" elements\n";
+  
+  std::cout<<"\n\nAdding four elements to the vector\n";
+  //assigning the value 3 to 4 elements of the vector
+  vectorInts.assign(4,3);
+  std::cout<<"vectorInts has "<<vectorInts.size()<<" elements\n";
+  
+  //printing the contents of vectorInts
+  std::cout<<"VectorInts has these elements:\n";
+  for (it = vectorInts.begin(); it != vectorInts.end(); ++it)
+    std::cout<<*it<<" ";
+
+  return 0;
+}
+
+/* Above code returns:
+vectorInts has 0 elements
+
+Adding four elements to the vector
+vectorInts has 4 elements
+VectorInts has these elements:
+3 3 3 3 
+*/
+
+
+// 23 VECTOR OPERATIONS
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main(void){
+    vector <int> vector1;           //initialize a vector
+    cout << vector1.size() << endl; //size of the vector1
+    
+    //Add values into the vector
+    vector1.push_back(3);
+    cout << "New size: " << vector1.size() << endl; //1
+    cout << "First value: " << vector1[0] << endl; //3
+    
+    vector1.push_back(5);   //add values to the back
+    cout << "New size: " << vector1.size() << endl; //1
+    cout << "First value: " << vector1[0] << endl; //3
+    cout << "Second value: " << vector1[1] << endl; //3
+    
+    //Default value=0
+    vector <int> vector2(5);
+    cout << "Size of vector2: " << vector2.size() << endl;
+    for(int i=0; i<5; i++)
+        cout << i <<"th value: " << vector2[i] << endl;
+    
+    //Assign 1 instead of default value!    
+    vector <int> vector3(5,1);
+    cout << "Size of vector3: " << vector3.size() << endl;
+    for(int i=0; i<5; i++)
+        cout << i <<"th value: " << vector3[i] << endl;
+        
+    //Assign the value later!
+    vector <int> vector4;
+    vector4.assign(5,-2);
+    cout << "Size of vector4: " << vector4.size() << endl; //5
+    for(int i=0; i<5; i++)
+        cout << i <<"th value: " << vector4[i] << endl;
+        
+    //The last element
+    int a = vector4.back();
+    cout << "a is: " << a << endl;
+    
+    //Multiple value assignment
+    vector <int> vector5(3,1);
+    vector5.pop_back(); //drops the last element!
+    cout << "The size after pop_back " <<  vector5.size() << endl;
+    
+    //vector.empty()
+    cout << "Is vector5 empty? " << vector5.empty() << endl;
+    cout << "Isn't vector5 empty? " << !vector5.empty() << endl;
+        
+    return 0;
+}
+
+
+
+
+
+
 
 
 
