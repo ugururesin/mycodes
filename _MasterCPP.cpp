@@ -4,6 +4,11 @@
 /* This Code is Written By Ugur Uresin
 For training purposes! */
 
+/* 
+To compile the program: g++ filename.cpp -o executableName
+To execute the program: ./executableName
+*/
+
 // CONTENT
 // 01 HELLO WORLD!
 // 02 NAMESPACE
