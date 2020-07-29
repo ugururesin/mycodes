@@ -32,6 +32,7 @@ To execute the program: ./executableName
 // 21 VECTOR CONSTRUCTING
 // 22 VECTORS and ITERATORS
 // 23 VECTOR OPERATIONS
+// 24 INSERT
 
 // -------------------------------------------------- //
 // 01 HELLO WORLD!
@@ -783,18 +784,37 @@ int main(void){
 }
 
 
+// 24 INSERT
+/* Insert is another method to add elements to a vector.
+Adds elements to the location after the iterator! */
+#include <iostream>
+#include <vector>
 
+using namespace std;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+int main(void)
+{
+    vector <int> vector6(3);
+    vector6[0]=10;
+    vector6[1]=20;
+    vector6[2]=30;
+    cout << "The initial size: " << vector6.size() << endl;    //3
+    //
+    std::vector<int>::iterator it1; //iterator definition
+    it1  = vector6.begin() + 1; //iterator: 1 after the first element
+    vector6.insert(it1, 50);
+    cout << "The size after insert with it1: " << vector6.size() << endl;    //4
+    cout << "The second element of vector6: " << vector6[1] << endl;
+    //
+    std::vector<int>::iterator it2; //iterator definition
+    it2  = vector6.end() - 1; //iterator: 1 after the first element
+    vector6.insert(it2, 80);
+    cout << "The size after insert with it2: " << vector6.size() << endl;    //3
+    cout << "The second last element of vector6: " << vector6[3] << endl;
+    //
+    std::vector<int>::iterator it;
+    for (it = vector6.begin(); it != vector6.end(); ++it)
+        cout << *it << " ";
+        
+    return 0;
+}
