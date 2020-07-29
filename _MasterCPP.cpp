@@ -26,6 +26,9 @@ To execute the program: ./executableName
 // 15 PRIVATE AREAS IN CLASS & ENCAPSULATION
 // 16 TEMPLATES (Same VarType)
 // 17 TEMPLATES (Multiple VarType)
+// 18 GENERIC CLASSES
+// 19 CLASS INHERITANCE
+// 20 MULTIPLE CLASS INHERITANCE
 
 // -------------------------------------------------- //
 // 01 HELLO WORLD!
@@ -542,4 +545,114 @@ T getBigger(T input1, U input2)
 Between 5 and 6.334 6 is bigger.
 Between 5 and 6.334 6.334 is bigger.
 */
+
+// 18 GENERIC CLASSES
+/*
+In C++, we can create generic classes as well as functions.
+We use the same template type placeholder as we did for functions.
+*/
+//Format
+template <class T>
+class StudentRecord
+{
+   private:
+        const int size = 5;
+        T grade;
+        int studentId;
+    public:
+       //note: I used a constructor that accepts the grade input
+        StudentRecord(T input);
+        void setId(int idIn);
+        void printGrades();
+
+    /* Just as with non-generic classes,
+    we have private and public members.
+    To signify the variable type that is changable,
+    use the name you assigned in the template command.
+    In our case, this is T. */
+};
+
+/*The member functions must all be treated as generic functions.
+You will have to add the template command to each member function.*/
+
+template<class T>
+StudentRecord<T>::StudentRecord(T input)
+{
+    grade=input;
+}
+
+//Notice I still add the template<class T here, even though this is not a generic //function. It is in a generic class. 
+
+template<class T>
+void StudentRecord<T>::setId(int idIn)
+{
+    studentId = idIn;
+}
+
+template<class T>
+void StudentRecord<T>::printGrades()
+{
+    cout<<"ID# "<<studentId<<": ";
+    cout<<grade<<"\n ";
+    cout<<"\n";
+}
+
+/* THE ISSUE with GENERIC CLASSES!
+Compilers need to know what variable type,
+and how many elements are required for an array at compile time. 
+The information is necessary to allocate memory for the array.
+Use a constructor to allocate memory for the array.
+Set a default value to each element in the array.
+So that the compiler can properly allocate memory for the array.*/
+
+
+// 19 CLASS INHERITANCE
+//Example
+//The derived class with Student as base class
+class GradStudent : public Student
+{
+    private:
+        string degree;
+    public:
+        GradStudent();
+        void setDegree(string degreeIn);
+        string getDegree();
+};
+
+/*
+In the line:
+class GradStudent: public Student
+The access control before the base class (in this case 'public')
+determines the access of the inherited class.
+
+There are three types of access control: 
+public, private, and protected.
+
+Public Inheritance means all public members of the base class are accessible to the derived class
+Private Inheritance means all members of the base class are private to the derived class
+Protected Inheritance means all members of the base class are protected to the derived class.
+
+It is very rare to have a protected or private inheritance,
+the vast majority of the time inheritance is public.*/
+
+// 20 MULTIPLE CLASS INHERITANCE
+//Format:
+class DerivedClass : access BaseClass1, ... ,access BaseClassN
+
+//Example:
+class TeachingAssociate: public Staff, public GradStudent
+/*
+In the statement shown above, the derived class is TeachingAssociate.
+It inherits attributes from Staff and from GradStudent.
+*/
+
+
+
+
+
+
+
+
+
+
 
