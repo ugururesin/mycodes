@@ -1,6 +1,9 @@
-## ROS PUBLISHERS
-#################
+#######################
+## WRITING ROS NODES ##
+#######################
 
+## ROS PUBLISHERS
+############################################################
 '''
 Publishers allow a node to send messages to a topic,
 so that data from the node can be used in other parts of the ROS system.
@@ -28,73 +31,62 @@ Once the publisher has been created as above, a message with the specified data 
 '''
 pub1.publish(message)
 
+
+## IMPLEMENTING ROS NODE
+############################################################
 '''
-You will now go through the process of implementing your first ROS node in python.
-This node is called simple_mover. 
-As it’s name implies, this node only has one responsibility, and that is to command joint movements for simple_arm.
+The node is called simple_mover. 
+This node only has one responsibility, and that is to command joint movements for simple_arm.
 
 To do so, it must publish joint angle command messages to the following topics:
+Topic Name 		/simple_arm/joint_1_position_controller/command
+Message Type 	std_msgs/Float64
+Description 	Commands joint 1 to move counter-clockwise, units in radians
+Topic Name 		/simple_arm/joint_2_position_controller/command
+Message Type 	std_msgs/Float64
+Description 	Commands joint 2 to move counter-clockwise, units in radians
 
-Topic Name	/simple_arm/joint_1_position_controller/command
-Message Type	std_msgs/Float64
-Description	Commands joint 1 to move counter-clockwise, units in radians
-Topic Name	/simple_arm/joint_2_position_controller/command
-Message Type	std_msgs/Float64
-Description	Commands joint 2 to move counter-clockwise, units in radians
-Note: If you no longer have the catkin workspace from the previous lesson, you can download a copy of it here. Alternately, If you’d prefer to skip to the punch, you can download the entire, complete simple_arm package from here.
+Note: You must have the catkin workspace!
 
-Adding the scripts directory
-In order to create a new node in python, you must first create the scripts directory within the simple_arm package, as it does not yet exist.
-'''
+## Adding the scripts directory
+In order to create a new node in python,
+you must first create the "scripts directory" within the simple_arm package
 
-'''
 $ cd ~/catkin_ws/src/simple_arm/
 $ mkdir scripts
-'''
 
-'''
-Creating a new script
+## Creating a new script
 Once the scripts directory has been created, executable scripts can be added to the package.
 However, in order for rosrun to find them, their permissions must be changed to allow execution.
 Let’s add a simple bash script that prints “Hello World” to the console.
-'''
 
-'''
 $ cd scripts
 $ echo '#!/bin/bash' >> hello
 $ echo 'echo Hello World' >> hello
-'''
 
-'''
 After setting the appropriate execution permissions on the file, rebuilding the workspace,
 and sourcing the newly created environment, you will be able to run the script.
-'''
 
-'''
 $ chmod u+x hello
 $ cd ~/catkin_ws
 $ catkin_make
 $ source devel/setup.bash
 $ rosrun simple_arm hello
-'''
 
-'''
 And there you have it! You have now added a script
 
 Creating the empty simple_mover node script
 To create the simple_mover node script,
 you will must simply follow the same basic routine introduced a moment ago.
-'''
 
-'''
 $ cd ~/catkin_ws/src/simple_arm
 $ cd scripts
 $ touch simple_mover
 $ chmod u+x simple_mover
 '''
 
-## THE simple_mover
-###################
+## CREATING A ROS NODE with PYTHON
+############################################################
 #!/usr/bin/env python
 
 import math
@@ -169,22 +161,119 @@ if __name__ == '__main__':
     except rospy.ROSInterruptException:
         pass
 
-## RUNNING simple_mover
-#######################
-'''
-Assuming that your workspace has recently been built,
-and it’s setup.bash has been sourced,
-you can launch simple_arm as follows:
-'''
 
+## RUNNING A ROS NODE with PYTHON
+############################################################
 '''
+Assuming that your workspace has recently been built & setup.bash has been sourced
+
+The "simple_arm" node can be launched as follows:
+
 $ cd ~/catkin_ws
 $ roslaunch simple_arm robot_spawn.launch
 
 Once ROS Master, Gazebo, and all of our relevant nodes are up and running,
-we can finally launch simple_mover. To do so, open a new terminal and type the following commands:
+we can finally launch simple_mover. 
+To do so, open a new terminal and type the following commands:
 
 $ cd ~/catkin_ws
 $ source devel/setup.bash
 $ rosrun simple_arm simple_mover
 '''
+
+
+## ROS-SERVICES
+############################################################
+
+## Defining Services
+service = rospy.Service('service_name', serviceClassName, handler)
+
+## Using Services
+service_proxy = rospy.ServiceProxy('service_name', serviceClassName)
+
+msg = serviceClassNameRequest()
+#update msg attributes here to have correct data
+response = service_proxy(msg)
+
+'''
+In the code above, a new service message is created by calling the serviceClassNameRequest() method.
+This method is provided by rospy, and its name is given by appending Request()
+to the name used for serviceClassName. Since the message is new,
+the message attributes should be updated to have the appropriate data.
+Next, the service_proxy can be called with the message, and the response stored.
+'''
+
+
+## THE Arm-Mover
+############################################################
+''' 
+Custom message generation
+Services
+Parameters
+Launch Files
+Subscribers
+Logging
+'''
+
+## Description of Arm Mover
+'''
+It is responsible for commanding the arm to move.
+
+The arm_mover node provides the service move_arm,
+which allows other nodes in the system to send movement_commands.
+'''
+
+## Creating a new service definition
+'''
+The definitions of the request and response message type are contained within .srv files
+living in the srv directory under the package’s root.
+
+Let’s define a new service for simple_arm. We shall call it GoToPosition.
+$ cd ~/catkin_ws/src/simple_arm/
+$ mkdir srv
+$ cd srv
+$ touch GoToPosition.srv
+
+You should now edit GoToPosition.srv, so it contains the following:
+
+float64 joint_1
+float64 joint_2
+---
+duration time_elapsed
+
+
+Service definitions always contain two sections, separated by a ‘---’ line.
+The first section is the definition of the request message. 
+Here, a request consists of two float64 fields, one for each of simple_arm’s joints. 
+The second section contains is the service response.
+The response contains only a single field, time_elapsed.
+The time_elapsed field is of type duration, and is responsible for
+indicating how long it took the arm to perform the movement.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
