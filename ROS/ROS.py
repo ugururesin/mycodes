@@ -426,6 +426,9 @@ To get the arm_mover node to launch, simply add the following:
 </node>
 
 
+## TESTING THE NEW SERVICE
+############################################################
+
 
 
 
