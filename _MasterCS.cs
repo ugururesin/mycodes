@@ -83,7 +83,22 @@ Console.WriteLine(DateTime.Now.ToString("ff"));		//	03
 Console.WriteLine(DateTime.Now.ToString("fff"));	//	999	(miliseconds)
 
 
-// METHODS
-string Mystring;
-Mystring = "Hello World!";
-Console.WriteLine(Mystring.Length);
+// STRING METHODS
+string Mystring = " Hello World! ";
+
+Console.WriteLine(Mystring.Length);			// 12 (NUMBER OF CHARACTERS)
+Console.WriteLine(Mystring.ToLower());		// hello world!
+Console.WriteLine(Mystring.ToUpper());		// HELLO WORLD!
+Console.WriteLine(Mystring.Trim());			
+Console.WriteLine(Mystring.TrimStart());
+Console.WriteLine(Mystring.TrimEnd());
+Console.WriteLine(Mystring.Trim());
+
+
+// MATH OPERATORS
+int num1 = 15;
+int num2 = 30;
+max_value = Math.Max(num1,num2);
+Console.WriteLine(max_value);
+
+
