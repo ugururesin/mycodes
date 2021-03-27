@@ -42,3 +42,45 @@ Console.WriteLine(Mylong2);
 Console.WriteLine(result);
 
 
+// DATETIME
+//using System;
+DateTime Now, Today;
+Now = DateTime.Now;
+Today = DateTime.Today;
+Console.WriteLine("Now: " + Now);
+Console.WriteLine("Today: " + Today);
+
+string Detail;
+Detail = "Today: "  + Today.ToString() + "\r\n";
+Detail += "Day: "   + Today.Day.ToString() + "\r\n";
+Detail += "Month: " + Today.Month.ToString() + "\r\n"; 
+Detail += "Hour: "  + Today.Hour.ToString() + "\r\n";
+Console.WriteLine(Detail);
+
+Console.WriteLine(DateTime.Now.ToString("d")); 		//	3/27/2021
+Console.WriteLine(DateTime.Now.ToString("D"));		//	Saturday, March 27, 2021
+Console.WriteLine(DateTime.Now.ToString("f"));		//	Saturday, March 27, 2021 3:45 PM
+Console.WriteLine(DateTime.Now.ToString("F"));		//	Saturday, March 27, 2021 3:45:30 PM
+Console.WriteLine(DateTime.Now.ToString("g"));		//	3/27/2021 3:45 PM
+Console.WriteLine(DateTime.Now.ToString("G"));		//	3/27/2021 3:45:30 PM
+Console.WriteLine(DateTime.Now.ToString("t"));		// 	3:45 PM
+Console.WriteLine(DateTime.Now.ToString("T"));		//	3:45:30 PM
+Console.WriteLine(DateTime.Now.ToString("Y"));		//	March 2021
+Console.WriteLine(DateTime.Now.ToString("M"));		//	March 27
+Console.WriteLine(DateTime.Now.ToString("dd"));		//	27
+Console.WriteLine(DateTime.Now.ToString("ddd"));	//	Sat
+Console.WriteLine(DateTime.Now.ToString("dddd"));	// 	Saturday
+Console.WriteLine(DateTime.Now.ToString("MM"));		//	03
+Console.WriteLine(DateTime.Now.ToString("MMM"));	//	Mar
+Console.WriteLine(DateTime.Now.ToString("MMMM"));	//	March
+Console.WriteLine(DateTime.Now.ToString("yy"));		//	21
+Console.WriteLine(DateTime.Now.ToString("yyy"));	//	2021
+Console.WriteLine(DateTime.Now.ToString("hh"));		//	03
+Console.WriteLine(DateTime.Now.ToString("HH"));		//	15
+Console.WriteLine(DateTime.Now.ToString("mm"));		//	45
+Console.WriteLine(DateTime.Now.ToString("ss"));		//	30
+Console.WriteLine(DateTime.Now.ToString("ff"));		//	03
+Console.WriteLine(DateTime.Now.ToString("fff"));	//	999	(miliseconds)
+
+
+// 
