@@ -83,4 +83,7 @@ Console.WriteLine(DateTime.Now.ToString("ff"));		//	03
 Console.WriteLine(DateTime.Now.ToString("fff"));	//	999	(miliseconds)
 
 
-// 
+// METHODS
+string Mystring;
+Mystring = "Hello World!";
+Console.WriteLine(Mystring.Length);
