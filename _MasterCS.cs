@@ -96,8 +96,7 @@ Console.WriteLine(Mystring.Trim());
 
 
 // MATH OPERATORS
-int num1 = 15;
-int num2 = 30;
+int num1 = 15, num2 = 30, max_value;
 max_value = Math.Max(num1,num2);
 Console.WriteLine(max_value);
 
